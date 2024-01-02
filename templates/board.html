@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chess Board</title>
+    
+    <link href="/static/board_style.css" rel="stylesheet">
+    <script src="myscripts.js"></script>
+
+    
+</head>
+<body>
+    {% if move=='w' %}
+        <h1>White To Play</h1>
+    
+    {% else %}
+        <h1>Black To Play</h1>
+    {% endif %}
+
+    <div class="chess-board" id="chess-board">
+        {% for piece in board %}
+            <div class="square dark">
+                {% if piece != ' ' %}
+                    {% if piece == 'WP' %} ♙ {% elif piece == 'WR' %} ♖ {% elif piece == 'WN' %} ♘ {% elif piece == 'WB' %} ♗ {% elif piece == 'WQ' %} ♕ {% elif piece == 'WK' %} ♔ {% elif piece == 'BP' %} ♟ {% elif piece == 'BR' %} ♜ {% elif piece == 'BN' %} ♞ {% elif piece == 'BB' %} ♝ {% elif piece == 'BQ' %} ♛ {% elif piece == 'BK' %} ♚ {% endif %}
+                {% else %}
+                    &nbsp;
+                {% endif %}
+            </div>
+        {% endfor %}
+    </div>
+
+    
+
+    
+    <form action="/puzzle_response" method="post" onsubmit="clearChessBoard()">
+           
+        <input id="sol" name="sol" placeholder="Move" type="text" autofocus>
+        <button type="submit">Submit</button>
+    </form>
+
+    
+</body>
+</html>

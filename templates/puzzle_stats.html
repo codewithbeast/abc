@@ -1,0 +1,15 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Puzzle
+{% endblock %}
+
+
+{% block main %}
+    <h1>Correctly solved puzzles: {{correct_puzzles}}</h1>
+    <h1>Incorrectly solved puzzles: {{incorrect_puzzles}}</h1>
+    <h1>Total puzzles attempted: {{total_puzzles}}</h1>
+
+    <h1>Percentage of correctly solved puzzles: {{correct_percentage}}%</h1>
+    <h1>Percentage of incorrectly solved puzzles: {{incorrect_percentage}}%</h1>
+{% endblock %}

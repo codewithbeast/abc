@@ -1,0 +1,12 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Puzzle
+{% endblock %}
+
+{% block main %}
+    <form action="/puzzle" method="post">
+        <input class="form-control mx-auto w-auto" id="puzzle_id" name="puzzle_id" placeholder="puzzle_id" type="text">
+        <button class="btn btn-primary" type="submit">Submit</button>
+    </form>
+{% endblock %}
