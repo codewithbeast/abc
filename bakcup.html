@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chess Board</title>
+    <style>
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .chess-board {
+            display: grid;
+            grid-template-columns: repeat(8, 60px);
+            gap: 2px;
+            background-color: #eee;
+            border: 2px solid #333;
+            border-radius: 5px;
+            padding: 4px;
+        
+        }
+
+        .square {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid #888;
+            font-size: 3em;
+            font-weight: bold;
+            color: #333;
+    
+        }
+
+        .dark {
+            background-color: #aaa;
+        }
+    </style>
+    <!-- ... (your existing head content) -->
+    <script>
+        function clearChessBoard() {
+            // Get the chess board element
+            var chessBoard = document.getElementById('chess-board');
+
+            // Clear the chess board content
+            chessBoard.innerHTML = '';
+
+            // You may also want to add some feedback to the user, for example:
+            // alert('Answer submitted! Chess board cleared.');
+        }
+    </script>
+
+    
+</head>
+<body>
+    {% if move=='w' %}
+        <h1>White To Play {{id}}</h1>
+    
+    {% else %}
+        <h1>Black To Play {{id}}</h1>
+    {% endif %}
+    <div class="chess-board" id="chess-board">
+        {% for piece in board %}
+            <div class="square dark">
+                {% if piece != ' ' %}
+                    {% if piece == 'WP' %} ♙ {% elif piece == 'WR' %} ♖ {% elif piece == 'WN' %} ♘ {% elif piece == 'WB' %} ♗ {% elif piece == 'WQ' %} ♕ {% elif piece == 'WK' %} ♔ {% elif piece == 'BP' %} ♟ {% elif piece == 'BR' %} ♜ {% elif piece == 'BN' %} ♞ {% elif piece == 'BB' %} ♝ {% elif piece == 'BQ' %} ♛ {% elif piece == 'BK' %} ♚ {% endif %}
+                {% else %}
+                    &nbsp;
+                {% endif %}
+            </div>
+        {% endfor %}
+    </div>
+
+    
+    <form action="/puzzle_response" method="post" onsubmit="clearChessBoard()">
+            <div>
+                <input id="sol" name="sol" placeholder="Move" type="text">
+            </div>  
+        <button type="submit">Submit</button>
+    </form>
+
+    <div>opponet played {{opp_move}}</div>
+    
+</body>
+</html>
